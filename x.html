@@ -1,0 +1,106 @@
+﻿<!doctype html>
+<html lang="pt-pt">
+
+<head>
+<meta charset="utf-8"/>
+<title> tag pre </title>
+
+<style>
+  body{
+ margin:10px;
+ padding:0;
+ box-sizing:border-box;
+ }
+
+
+
+.game-card {
+    width:80%;
+  height:400px;
+  border:1px solid #333;
+  margin:0 auto;
+  position:relative;
+
+   overflow:hidden;
+}
+
+
+.mario
+{
+width:80px; height:80px;
+    position:absolute;
+    bottom:0;
+    left:0;   
+}
+
+
+.perigo{
+width:40px; height:40px;
+    position:absolute;
+    bottom:0;
+    right:0;    
+    animation:animição-perigo 2s infinit;   
+}
+
+
+@keyframes animição-perigo
+{
+
+    from
+    {
+        right:-100%;
+    }
+
+    to
+      {
+        right:100%;
+    }
+}
+  
+</style>
+</head>
+
+
+<body>
+
+<div class="game-card">
+ <img src="mario_corre.gif" class="mario"/> 
+ <img src="perigo.jpg" class="perigo"/> 
+</div>
+
+
+<script>
+
+document.addEventListener("keydown",pula);
+
+ const x=document.querySelector(".mario");
+ const perigo=document.querySelector(".perigo");
+ 
+function pula()
+{   
+  x.style.bottom=18+"%";
+ setTimeout(()=>{ x.style.bottom=0},300); 
+
+}
+
+
+const loop = setInterval(()=> {
+
+const perigoposition=perigo.offsetLeft;
+console.log(perigoposition);
+
+if(perigoposition<=95)
+{
+perigo.style.animation="none";
+
+}
+
+
+},10);
+
+
+</script>
+
+</body>
+
+</html>
